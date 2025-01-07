@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"; // Import Link
 import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
@@ -69,15 +70,13 @@ const NavBar = () => {
             {/* Desktop Navigation Links */}
             <div className="hidden md:block">
               {navItems.map((item, index) => (
-                <a
+                <Link
                   key={index}
-                  href={
-                    item === "Resume" ? "/resume" : `/#${item.toLowerCase()}`
-                  }
+                  to={item === "Resume" ? "/resume" : `/#${item.toLowerCase()}`}
                   className="nav-hover-btn"
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -141,19 +140,15 @@ const NavBar = () => {
         {isMobileMenuOpen && (
           <div className="absolute top-16 left-0 w-full bg-transparent text-white py-4 md:hidden">
             <div className="flex flex-col items-end space-y-4">
-              {" "}
-              {/* Align text to the right */}
               {navItems.map((item, index) => (
-                <a
+                <Link
                   key={index}
-                  href={
-                    item === "Resume" ? "/resume" : `/#${item.toLowerCase()}`
-                  }
+                  to={item === "Resume" ? "/resume" : `/#${item.toLowerCase()}`}
                   className="text-xl hover:text-blue-400 transition duration-200"
                   onClick={toggleMobileMenu} // Close the menu when clicking a link
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

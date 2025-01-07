@@ -16,7 +16,7 @@ const Hero = () => {
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
-  const totalVideos = 4;
+  const totalVideos = 2; // Updated to 2 videos
   const nextVdRef = useRef(null);
 
   const handleVideoLoad = () => {
@@ -31,7 +31,6 @@ const Hero = () => {
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
-
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
@@ -80,7 +79,7 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const getVideoSrc = (index) => `videos/hero-${index}.mp4`; // Updated to work with 2 videos
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
@@ -108,7 +107,7 @@ const Hero = () => {
               >
                 <video
                   ref={nextVdRef}
-                  src={getVideoSrc((currentIndex % totalVideos) + 1)}
+                  src={getVideoSrc((currentIndex % totalVideos) + 1)} // Updated to use 2 videos
                   loop
                   muted
                   id="current-video"
@@ -121,7 +120,7 @@ const Hero = () => {
 
           <video
             ref={nextVdRef}
-            src={getVideoSrc(currentIndex)}
+            src={getVideoSrc(currentIndex)} // Updated to use 2 videos
             loop
             muted
             id="next-video"
@@ -130,7 +129,7 @@ const Hero = () => {
           />
           <video
             src={getVideoSrc(
-              currentIndex === totalVideos - 1 ? 1 : currentIndex
+              currentIndex === totalVideos - 1 ? 1 : currentIndex // Updated to cycle between 2 videos
             )}
             autoPlay
             loop
@@ -141,7 +140,7 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-black text-2xl sm:text-3xl">
-        Cool<b>B</b>uddy
+          Cool<b>B</b>uddy
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
@@ -153,8 +152,6 @@ const Hero = () => {
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
               An Software Developer <br /> Trust me am a developer
             </p>
-
-            
           </div>
         </div>
       </div>
